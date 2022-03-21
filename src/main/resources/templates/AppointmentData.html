@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <div th:replace="fragments/commonui::header"></div>
+<body>
+    <div th:replace="fragments/commonui::usermenu"></div>
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-primary text-while text-center">
+                <h3>Appointment data page</h3>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-hover">
+                    <tr class="bg-info text-white">
+                        <th>ID</th>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>No.of Slots</th>
+                        <th>Details</th>
+                        <th>Consulation fee </th>
+                        <th>Operations</th>
+                    </tr>
+                    <tr th:each="ob:${list}">
+                        <td>[[${ob.appId}]]</td>
+                        <td>[[${ob.doctor.docName}]]</td>
+                        <td>[[${ob.appDate}]]</td>
+                        <td>[[${ob.appSlots}]]</td>
+                        <td>[[${ob.appDetails}]]</td>
+                        <td>[[${ob.appFee}]]</td>
+                        <td>
+                            <a th:href="@{/app/delete(id=${ob.appId})}" class="btn btn-danger">DELETE</a>
+                            <a th:href="@{/app/edit(id=${ob.appId})}" class="btn btn-warning">EDIT</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--card body end-->
+            <div class="card-footer bg-light text-success" th:if="${message!=null}">
+                [[${message}]]
+            </div>
+            <!--card footer end-->
+        </div>
+         <!--card  end-->
+    </div>
+    <!--container end-->
+</body>
+</html>

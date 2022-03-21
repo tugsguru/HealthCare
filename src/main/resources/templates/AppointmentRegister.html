@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+    <div th:replace="fragments/commonui::header"></div>
+
+<body>
+    <div th:replace="fragments/commonui::usermenu"></div>
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-info text-white text-center">
+                <h3>Appointment register page</h3>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/app/save}" method="post">
+                    <!--row# Doctor-->
+
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Doctor</label>
+                        </div>
+                        <div class="col-4">
+                             <select id="doctor" name="doctor.docId">
+                                <option>--Select--</option>
+                                 <option th:each="ob:${doctors}"
+                                   th:value="${ob.key}"
+                                   th:text="${ob.value}"/>
+                              </select>
+                        </div>
+                        <div class="col-5">
+                            <span id="appDocError"></span>
+                        </div>
+                    </div>
+                
+                    <!--row#1-->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Date</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="appDate" id="appDate" class="form-control"/>
+                        </div>
+                        <div class="col-5">
+                            <span id="appDateError"></span>
+                        </div>
+                    </div>
+                    <!--row#2-->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>No.of Slots</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="appSlots" id="appSlots" class="form-control"/>
+                        </div>
+                        <div class="col-5">
+                            <span id="appSlotsError"></span>
+                        </div>
+                    </div>
+                    <!--row#3-->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Details</label>
+                        </div>
+                        <div class="col-4">
+                            <textarea name="appDetails" id="appDetails" class="form-control"></textarea>
+                        </div>
+                        <div class="col-5">
+                            <span id="appDetailsError"></span>
+                        </div>
+                    </div>
+                     <!--row#4-->
+                     <div class="row">
+                        <div class="col-3">
+                            <label>Consulation fee</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="appFee" id="appFee" class="form-control"/>
+                        </div>
+                        <div class="col-5">
+                            <span id="appFeeError"></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Register <i class="fa fa-plus-square" aria-hidden="true"></i> </button>
+
+                    </div>
+                </form>
+            </div>
+          
+            <div class="card-footer bg-light text-success" th:if="${message!=null}">
+              [[${message}]]
+            </div>
+
+            <!--card footer end-->
+
+        </div>
+        <!--card  end-->
+    </div>
+    <!--container end-->
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+    <div th:replace="fragments/commonui::header"></div>
+
+<body>
+    <div th:replace="fragments/commonui::usermenu"></div>
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-info text-white text-center">
+                <h3>Specialization Edit page</h3>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/spec/update}" method="POST" th:object="${specialization}">
+                    <!--row#0-->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Specialization ID</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" th:field="*{specId}" class="form-control" readonly/>
+                        </div>
+                        <div class="col-5">
+                            <span id="specIdError"></span>
+                        </div>
+                    </div>
+                    <!--row#1-->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Specialization code</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" th:field="*{specCode}" class="form-control"/>
+                        </div>
+                        <div class="col-5">
+                            <span id="specCodeError"></span>
+                        </div>
+                    </div>
+                    <!--row#2-->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Specialization name</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" th:field="*{specName}" class="form-control"/>
+                        </div>
+                        <div class="col-5">
+                            <span id="specNameError"></span>
+                        </div>
+                    </div>
+                    <!--row#3-->
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Note</label>
+                        </div>
+                        <div class="col-4">
+                            <textarea th:field="*{specNote}" class="form-control"></textarea>
+                        </div>
+                        <div class="col-5">
+                            <span id="specNoteError"></span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Update</button>
+
+                    </div>
+                </form>
+               
+                <!--
+                <div class="card-footer bg-light text-success" th:if="${message!=null}">
+					[[${message}]]
+				</div>
+				card footer end-->
+            </div>
+        </div>
+        <!--card  end-->
+    </div>
+    <!--container end-->
+</body>
+</html>
