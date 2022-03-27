@@ -40,13 +40,20 @@ public class Doctor {
 	@Column(name="doc_note_col")
 	private String docNote;
 	
+	@Column(name="doc_img_url_col")
+	private String imageUrl;
+	
 	//------ Module Integration -----------
 	@ManyToOne
 	@JoinColumn(name="spec_id_fk_col")
 	private Specialization specialization;
 
+	public Doctor() {
+		super();
+	}
+
 	public Doctor(Long docId, String docName, String docEmail, String docAddr, String docMobile, String docGen,
-			String docNote, Specialization specialization) {
+			String docNote, String imageUrl, Specialization specialization) {
 		super();
 		this.docId = docId;
 		this.docName = docName;
@@ -55,11 +62,8 @@ public class Doctor {
 		this.docMobile = docMobile;
 		this.docGen = docGen;
 		this.docNote = docNote;
+		this.imageUrl = imageUrl;
 		this.specialization = specialization;
-	}
-
-	public Doctor() {
-		super();
 	}
 
 	public Long getDocId() {
@@ -118,6 +122,14 @@ public class Doctor {
 		this.docNote = docNote;
 	}
 
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 	public Specialization getSpecialization() {
 		return specialization;
 	}
@@ -125,13 +137,7 @@ public class Doctor {
 	public void setSpecialization(Specialization specialization) {
 		this.specialization = specialization;
 	}
-	
-	
-	
-	
 
-	
-	
 	
 
 }

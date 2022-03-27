@@ -1,5 +1,9 @@
 package in.nareshit.raghu.entity;
 
+
+
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 //import lombok.Data;
 
@@ -23,7 +32,9 @@ public class Appointment {
 	private Long appId;
 	
 	@Column(name="app_date_col")
-	private String appDate;
+	@DateTimeFormat(iso = ISO.DATE)  //that does	UI(Form) : Date ---> Java Date object
+	@Temporal(TemporalType.DATE)     //that converts Java Object ----> DB (Table)
+	private Date appDate;
 	
 	@Column(name="app_slots_col")
 	private String appSlots;
@@ -40,10 +51,9 @@ public class Appointment {
 
 	public Appointment() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Appointment(Long appId, String appDate, String appSlots, String appDetails, String appFee, Doctor doctor) {
+	public Appointment(Long appId, Date appDate, String appSlots, String appDetails, String appFee, Doctor doctor) {
 		super();
 		this.appId = appId;
 		this.appDate = appDate;
@@ -61,11 +71,11 @@ public class Appointment {
 		this.appId = appId;
 	}
 
-	public String getAppDate() {
+	public Date getAppDate() {
 		return appDate;
 	}
 
-	public void setAppDate(String appDate) {
+	public void setAppDate(Date appDate) {
 		this.appDate = appDate;
 	}
 
@@ -100,6 +110,10 @@ public class Appointment {
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 	}
+
+	
+	
+
 	
 		
 	

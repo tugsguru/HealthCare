@@ -87,7 +87,7 @@ public class DoctorController {
 		Doctor obj=service.getOneDoctor(id);
 		
 		System.out.println("----test edit----");
-		System.out.println(obj);
+		System.out.println(obj.getImageUrl());
 		
 		if(obj!=null) {
 			model.addAttribute("doctor", obj);

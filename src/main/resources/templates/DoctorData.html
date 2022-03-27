@@ -14,6 +14,7 @@
                     <tr class="bg-info text-white">
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Image</th>
                         <th>Email</th>
                         <th>Specialization</th>
                         <th>Address</th>
@@ -25,6 +26,7 @@
                     <tr th:each="ob:${list}">
                         <td>[[${ob.docId}]]</td>
                         <td>[[${ob.docName}]]</td>
+                        <td><img th:src="${ob.imageUrl}" width="50%" height="50%" /></td>
                         <td>[[${ob.docEmail}]]</td>
                         <td>[[${ob.specialization.specName}]]</td>
                         <td>[[${ob.docAddr}]]</td>
